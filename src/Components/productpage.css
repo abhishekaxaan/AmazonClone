@@ -11,7 +11,7 @@
   position: relative;
   display: flex;
   justify-content: space-evenly;
-  top: 180px;
+  top: 80px;
   width: 75%;
   height: 100%;
   margin-bottom: 210px;
@@ -415,7 +415,7 @@
 
 @media (max-width: 520px) {
   .item-img {
-    width: 138px;
+    width: 340px;
   }
 
   .item-title {
@@ -447,7 +447,7 @@
   }
 
   .item-img {
-    width: 110px;
+    width: 150px;
   }
 }
 
