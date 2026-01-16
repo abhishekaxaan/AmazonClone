@@ -3,16 +3,14 @@
 
 .poster-area {
   background: rgb(233, 147, 23);
-  background: radial-gradient(
-    circle,
-    rgba(233, 147, 23, 1) 0%,
-    rgba(233, 125, 23, 1) 87%
-  );
+  background: radial-gradient(circle,
+      rgba(233, 147, 23, 1) 0%,
+      rgba(233, 125, 23, 1) 87%);
   position: relative;
   border-radius: 20px;
   margin-left: 220px;
   margin-right: 220px;
-  top: 40px;
+  top: 0px;
   padding: 10px;
   padding-bottom: 40px;
   padding-left: 40px;
@@ -42,6 +40,7 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -111,9 +110,11 @@
     margin-left: 40px;
     margin-right: 40px;
   }
+
   .poster-head {
     text-align: center;
   }
+
   .poster-desc {
     width: fit-content;
     text-align: center;
@@ -124,20 +125,32 @@
   .poster-head {
     font-size: 28px;
   }
+
   .poster-desc {
     font-size: 14px;
   }
-  .poster-desc > b {
+
+  .poster-desc>b {
     font-size: 17px;
   }
+
   .browse-btn {
     font-size: 15px;
   }
 }
 
+@media (max-width: 480px) {
+  .poster-area {
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
 @media (max-width: 300px) {
   .poster-area {
-    margin-left: 17px;
-    margin-right: 17px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }

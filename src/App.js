@@ -45,20 +45,20 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={user ? <Navigate to="/home" /> : <Signin />} />
-        <Route path="/signup" element={user ? <Navigate to="/home" /> : <Signup />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Signin />} />
+        <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />} />
+        <Route path="/wishlists" element={<Lists />} />
+        <Route path="/cart" element={<CartSection />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/product/:id" element={<ProductPage />} />
         {user && (
           <>
-            <Route path="/home" element={<Home />} />
-            <Route path="/wishlists" element={<Lists />} />
-            <Route path="/cart" element={<CartSection />} />
             <Route path="/payment" element={<Payment />} />
-            <Route path="/orders" element={<Orders />} />
             <Route path="/account" element={<Profile />} />
-            <Route path="/product/:id" element={<ProductPage />} />
-            <Route path="*" element={<Error/>} />
           </>
         )}
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );

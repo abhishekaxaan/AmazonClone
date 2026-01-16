@@ -6,16 +6,21 @@ import "./productpage.css";
 import Rating from "../imgs/rating.png";
 import added from "../imgs/added.png";
 import add from "../imgs/not-added.png";
+import WishlistAdd from "../imgs/heart.png";
+import WishlistAdded from "../imgs/red-heart.png";
 import { AddToCart, RemoveCart } from "../action/Cart";
+import { AddToList, RemoveList } from "../action/List";
 import { useSelector, useDispatch } from "react-redux";
 import VanillaTilt from "vanilla-tilt";
-import LowerNav from "./LowerNav";
+
+
 
 function ProductPage() {
   const { id } = useParams();
   const [product, setProduct] = useState("");
   const [Size, setSize] = useState("");
   const [AddedIds, setAddedIds] = useState([]);
+  const [WishlistIds, setWishlistIds] = useState([]);
   const [reviews, setReviews] = useState(null);
   const Quantity = 1;
 
@@ -24,6 +29,7 @@ function ProductPage() {
   document.title = `${product ? product.title : "Amazon"}`
 
   const CartItems = useSelector((state) => state.CartItemsAdded.CartItems);
+  const ListItems = useSelector((state) => state.ItemsAdded.ListItems);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -48,18 +54,34 @@ function ProductPage() {
     setAddedIds(ids);
   }, [CartItems]);
 
+  useEffect(() => {
+    // Sync Wishlist
+    if (ListItems) {
+      const ids = ListItems.map((item) => item.id);
+      setWishlistIds(ids);
+    }
+  }, [ListItems]);
+
   const isAdded = (itemId) => {
     return AddedIds.includes(itemId);
   };
 
+  const inWishlist = (itemId) => {
+    return WishlistIds.includes(itemId);
+  }
+
   useEffect(() => {
-    VanillaTilt.init(tiltRef.current, {
-      max: 10,
-      speed: 100,
-      transition: true,
-      easing: "ease-out",
-    });
-  }, []);
+    if (tiltRef.current) {
+      VanillaTilt.init(tiltRef.current, {
+        max: 10,
+        speed: 100,
+        transition: true,
+        easing: "ease-out",
+      });
+    }
+  }, [product]); // Wait for product to load for ref? or logic needs check.
+  // Original logic was empty dep array, but might fail if img not rendered.
+  // Keeping empty array if it worked, but checking "product" logic in return.
 
   const handleAddToCart = () => {
     if (!isAdded(product.id)) {
@@ -104,12 +126,36 @@ function ProductPage() {
         className="product-page"
       >
         <div className={product ? `product-dataa animate` : `product-dataa`}>
-          <div className="item-image">
+          <div className="item-image" style={{ position: 'relative' }}>
             <img
               ref={tiltRef}
               src={product.image}
               className={`item-img ${product.image ? "img-style" : ""}`}
             />
+            {product && (
+              <img
+                src={inWishlist(product.id) ? WishlistAdded : WishlistAdd}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (!inWishlist(product.id)) {
+                    dispatch(AddToList(product));
+                  } else {
+                    dispatch(RemoveList(product.id));
+                  }
+                }}
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  width: '35px',
+                  cursor: 'pointer',
+                  zIndex: 100,
+                  backgroundColor: 'rgba(255,255,255,0.7)',
+                  borderRadius: '50%',
+                  padding: '5px'
+                }}
+              />
+            )}
           </div>
           <div className="product-details">
             <p className="item-title">{product.title}</p>
@@ -128,7 +174,7 @@ function ProductPage() {
             <div
               style={
                 product.category === "men's clothing" ||
-                product.category === "women's clothing"
+                  product.category === "women's clothing"
                   ? { display: "block" }
                   : { display: "none" }
               }
@@ -169,7 +215,7 @@ function ProductPage() {
               </div>
             </div>
             {(product && product.category === "men's clothing") ||
-            product.category === "women's clothing" ? (
+              product.category === "women's clothing" ? (
               <hr className="horizontal" />
             ) : (
               ""
@@ -211,9 +257,7 @@ function ProductPage() {
           </div>
         </div>
       </div>
-      <div className="lowerNav">
-        <LowerNav />
-      </div>
+
       {product ? <Footer /> : ""}
     </>
   );

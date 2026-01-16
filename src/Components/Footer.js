@@ -74,13 +74,9 @@ function Footer() {
           <img src={Logo} className="amazon-img" />
           <div className="dev-data">
             <p>&copy; 2023 | Developed by </p>
-            <a
-              className="dev-link"
-              href="https://github.com/shubho0908"
-              target="_blank"
-            >
-              Shubhojeet Bera
-            </a>
+            <div className="dev-link">
+              Abhishek Kumar Singh
+            </div>
           </div>
         </div>
       </div>

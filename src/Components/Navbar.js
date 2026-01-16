@@ -7,11 +7,12 @@ import cart from "../imgs/cart.png";
 import orders from "../imgs/orders.png";
 import Default from "../imgs/default.png";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import "./navbar.css";
 import { app } from "../Firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import swal from "sweetalert";
+import SubNavbar from "./SubNavbar";
 
 const auth = getAuth(app);
 
@@ -80,180 +81,120 @@ function Navbar() {
 
   return (
     <>
-      <div className="navbar">
-        <div className="left-section">
-          <img
-            onClick={() => {
-              if (window.location.href.includes("/payment")) {
-                swal({
-                  title: "Are you sure?",
-                  text: "Your transaction is still pending!",
-                  icon: "warning",
-                  buttons: ["Cancel", "Yes"],
-                }).then((willNavigate) => {
-                  if (willNavigate) {
-                    navigate({ pathname: "/home" });
-                  }
-                });
-              } else {
-                navigate({ pathname: "/home" });
-              }
-            }}
-            src={Logo}
-            className="logo"
-          />
-          <img
-            onClick={() => {
-              if (window.location.href.includes("/payment")) {
-                swal({
-                  title: "Are you sure?",
-                  text: "Your transaction is still pending!",
-                  icon: "warning",
-                  buttons: ["Cancel", "Yes"],
-                }).then((willNavigate) => {
-                  if (willNavigate) {
-                    navigate({ pathname: "/home" });
-                  }
-                });
-              } else {
-                navigate({ pathname: "/home" });
-              }
-            }}
-            src={LogoSmall}
-            className="logo2"
-          />
+      {/* DESKTOP NAVBAR */}
+      <div className="navbar desktop-only">
+        <NavLink to="/">
+          <img src={Logo} className="nav-logo" alt="Amazon Logo" />
+        </NavLink>
 
+        <div className="nav-fill">
           <div className="search-bar">
+            {/* SEARCH */}
             <input
               type="text"
-              className="search-box"
-              placeholder="Search..."
+              placeholder="Search Amazon"
+              name="search"
+              autoComplete="off"
+              onChange={(event) => {
+                setSearchText(event.target.value);
+              }}
               value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
+              className="search-input"
             />
-            <button className="search-btn">
-              <img src={search} className="search-img" />
+            <button className="search-btn" type="submit">
+              <img src={search} className="search-icon" alt="Search" />
             </button>
+            {/* SEARCH */}
           </div>
         </div>
-        <div className="right-section">
-          <img
-            onClick={() => {
-              if (window.location.href.includes("/payment")) {
-                swal({
-                  title: "Are you sure?",
-                  text: "Your transaction is still pending!",
-                  icon: "warning",
-                  buttons: ["Cancel", "Yes"],
-                }).then((willNavigate) => {
-                  if (willNavigate) {
-                    navigate("/wishlists");
-                  }
-                });
-              } else {
-                navigate("/wishlists");
-              }
-            }}
-            src={wishlist}
-            className="wishlist"
-          />
-          <p
-            style={
-              ListItems && ListItems.length > 0
-                ? { opacity: 1 }
-                : { opacity: 0 }
-            }
-            className="list-count"
-          >
-            {ListItems.length}
-          </p>
 
-          <img
-            onClick={() => {
-              if (window.location.href.includes("/payment")) {
-                swal({
-                  title: "Are you sure?",
-                  text: "Your transaction is still pending!",
-                  icon: "warning",
-                  buttons: ["Cancel", "Yes"],
-                }).then((willNavigate) => {
-                  if (willNavigate) {
-                    navigate("/cart");
-                  }
-                });
-              } else {
-                navigate("/cart");
-              }
-            }}
-            src={cart}
-            className="cart"
-          />
+        <div className="right-content">
+          <div className="right-section">
+            <div
+              className="nav-option"
+              onClick={() => {
+                if (user) {
+                  navigate("/account");
+                } else {
+                  navigate("/login");
+                }
+              }}
+            >
+              <span className="nav-line-1">Hello, {user ? user.displayName : "sign in"}</span>
+              <span className="nav-line-2">Account & Lists</span>
+            </div>
 
-          <p
-            style={
-              CartItems && CartItems.length > 0
-                ? { opacity: 1 }
-                : { opacity: 0 }
-            }
-            className="cart-count"
-          >
-            {totalQuantity}
-          </p>
+            <div
+              onClick={() => navigate("/orders")}
+              className="nav-option"
+            >
+              <span className="nav-line-1">Returns</span>
+              <span className="nav-line-2">& Orders</span>
+            </div>
 
-          <img
-            onClick={() => {
-              if (window.location.href.includes("/payment")) {
-                swal({
-                  title: "Are you sure?",
-                  text: "Your transaction is still pending!",
-                  icon: "warning",
-                  buttons: ["Cancel", "Yes"],
-                }).then((willNavigate) => {
-                  if (willNavigate) {
-                    navigate("/orders");
-                  }
-                });
-              } else {
-                navigate("/orders");
-              }
-            }}
-            src={orders}
-            className="orders"
-          />
-          <p
-            style={
-              OrderItems && OrderItems.length > 0
-                ? { opacity: 1 }
-                : { opacity: 0 }
-            }
-            className="order-count"
-          >
-            {totalLength}
-          </p>
+            <div
+              onClick={() => navigate("/wishlists")}
+              className="nav-option"
+            >
+              <span className="nav-line-1">Your</span>
+              <span className="nav-line-2">Wishlist</span>
+            </div>
 
-          <img
-            onClick={() => navigate("/account")}
-            src={
-              user && user.photoURL
-                ? user.photoURL.replace(/^http:\/\//i, "https://") //replaces the http with https
-                : Default
-            }
-            className="default"
-          />
+            <div
+              onClick={() => navigate("/cart")}
+              className="nav-item-cart"
+            >
+              <img src={cart} className="nav-cart-icon" alt="Cart" />
+              <span className="cart-count-badge">{totalQuantity}</span>
+              <span className="nav-line-2 cart-text">Cart</span>
+            </div>
+          </div>
         </div>
-        <div className="search-bar2">
+      </div>
+
+      {/* MOBILE NAVBAR */}
+      <div className="navbar mobile-only">
+        <div className="mobile-nav-left">
+          <div className="mobile-menu-btn">
+            <span className="hamburger-icon-mobile"></span>
+          </div>
+          <NavLink to="/">
+            <img src={Logo} className="nav-logo-mobile" alt="Amazon Logo" />
+          </NavLink>
+        </div>
+
+        <div className="mobile-nav-right">
+
+          <div className="mobile-user" onClick={() => navigate(user ? "/account" : "/login")}>
+            <span className="mobile-user-name">{user ? user.displayName.split(' ')[0] : "Sign in"}</span>
+            <img src={orders} className="mobile-user-icon" alt="User" />
+          </div>
+          <div className="mobile-cart" onClick={() => navigate("/cart")}>
+            <img src={cart} className="mobile-cart-icon" alt="Cart" />
+            <span className="mobile-cart-count">{totalQuantity}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="navbar-mobile-search">
+        <div className="search-bar">
           <input
             type="text"
-            className="search-box"
-            placeholder="Search..."
+            placeholder="Search Amazon"
+            name="search"
+            autoComplete="off"
+            onChange={(event) => {
+              setSearchText(event.target.value);
+            }}
             value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+            className="search-input"
           />
-          <button className="search-btn">
-            <img src={search} className="search-img" />
+          <button className="search-btn" type="submit">
+            <img src={search} className="search-icon" alt="Search" />
           </button>
         </div>
       </div>
+      <SubNavbar />
 
       {searchText !== "" && (
         <div
@@ -264,26 +205,13 @@ function Navbar() {
             searchResults.map((product) => (
               <div
                 onClick={() => {
-                  if (window.location.href.includes("/payment")) {
-                    swal({
-                      title: "Are you sure?",
-                      text: "Your transaction is still pending!",
-                      icon: "warning",
-                      buttons: ["Cancel", "Yes"],
-                    }).then((willNavigate) => {
-                      if (willNavigate) {
-                        navigate(`/product/${product.id}`);
-                      }
-                    });
-                  } else {
-                    navigate(`/product/${product.id}`);
-                  }
+                  navigate(`/product/${product.id}`);
                 }}
                 className="search-results2"
                 key={product.id}
               >
                 <div className="product-img">
-                  <img src={product.image} className="product-image" />
+                  <img src={product.image} className="product-image" alt={product.title} />
                 </div>
                 <div className="product-data">
                   <p className="product-title">

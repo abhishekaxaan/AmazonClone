@@ -7,10 +7,12 @@ import { AddToList, RemoveList } from "../action/List";
 import { useSelector, useDispatch } from "react-redux";
 import Footer from "./Footer";
 import Spinner from "./Spinner";
-import LowerNav from "./LowerNav";
-import { NavLink } from "react-router-dom";
+
+import { NavLink, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 function Deals() {
+  const navigate = useNavigate();
   const [AllProducts, setAllProducts] = useState([]);
   const [AddedIds, setAddedIds] = useState([]);
   const [loading, setLoading] = useState(true); // add loading state
@@ -48,17 +50,39 @@ function Deals() {
 
   return (
     <div className="Deals">
-      <p className="deals-head">Hot Deals 🔥</p>
+      <div className="deals-head">
+        <p>All Products</p>
+      </div>
       {loading && <Spinner />}
       <div className="deal-items">
         {AllProducts &&
           AllProducts.map((items) => {
             return (
-              <div className="card" key={items.id}>
+              <div
+                className="card"
+                key={items.id}
+                onClick={() => {
+                  if (window.location.href.includes('/payment')) {
+                    swal({
+                      title: "Are you sure?",
+                      text: "Your transaction is still pending!",
+                      icon: "warning",
+                      buttons: ["Cancel", "Yes"],
+                    }).then((willNavigate) => {
+                      if (willNavigate) {
+                        navigate(`/product/${items.id}`)
+                      }
+                    });
+                  } else {
+                    navigate(`/product/${items.id}`)
+                  }
+                }}
+              >
                 <div className="card-img-data">
                   <img src={items.image} className="card-img" />
                   <img
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.stopPropagation();
                       if (!isAdded(items.id)) {
                         dispatch(AddToList(items));
                       } else {
@@ -102,9 +126,7 @@ function Deals() {
             );
           })}
       </div>
-      <div className="lowerNav">
-        <LowerNav />
-      </div>
+
       <Footer />
     </div>
   );

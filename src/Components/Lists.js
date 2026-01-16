@@ -8,11 +8,12 @@ import Footer from "./Footer";
 import rating from "../imgs/rating.png";
 import Navbar from "./Navbar";
 import empty from "../imgs/empty.png";
-import { NavLink } from "react-router-dom";
-import LowerNav from "./LowerNav";
+import { NavLink, useNavigate } from "react-router-dom";
+
 import "./lists.css";
 
 function Lists() {
+  const navigate = useNavigate();
   const [AddedIds, setAddedIds] = useState([]);
   const ListItems = useSelector((state) => state.ItemsAdded.ListItems);
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ function Lists() {
                 joy to your life and watch as they become a reality with just a
                 few clicks."
               </p>
-              <Link to="/home">
+              <Link to="/">
                 <button className="shopping">Go Shopping</button>
               </Link>
             </div>
@@ -64,11 +65,19 @@ function Lists() {
               ListItems.length > 0 &&
               ListItems.map((items) => {
                 return (
-                  <div className="card" key={items.id}>
+                  <div
+                    className="card"
+                    key={items.id}
+                    onClick={() => {
+                      // Wishlist doesn't need pending check usually, but good for consistency
+                      navigate(`/product/${items.id}`)
+                    }}
+                  >
                     <div className="card-img-data">
                       <img src={items.image} className="card-img" />
                       <img
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.stopPropagation();
                           if (!isAdded(items.id)) {
                             dispatch(AddToList(items));
                           } else {
@@ -110,9 +119,7 @@ function Lists() {
               })}
           </div>
         </div>
-        <div className="lowerNav">
-          <LowerNav />
-        </div>
+
         <Footer />
       </div>
     </>

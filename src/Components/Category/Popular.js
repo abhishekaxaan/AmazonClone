@@ -48,7 +48,7 @@ function Popular() {
     <>
       <div className="popular">
         <div className="popular-data">
-          <p className="popular-head">Popular categories 🌟</p>
+          <p className="popular-head">Popular categories</p>
         </div>
         <div className="popular-items">
           {images.map((image, index) => (
@@ -79,7 +79,7 @@ function Popular() {
         <Jewelery />
       ) : activeIndex === 0 ? (
         <Electronics />
-      ) : <Deals/>}
+      ) : <Deals />}
     </>
   );
 }

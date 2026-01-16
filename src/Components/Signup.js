@@ -96,7 +96,7 @@ function Signup() {
       await updateProfile(user, {
         displayName: name,
       });
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       swal({
         title: "Error!",
@@ -110,7 +110,7 @@ function Signup() {
   const GoogleAuth = async () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        navigate("/home");
+        navigate("/");
       })
       .catch((error) => {
         swal({

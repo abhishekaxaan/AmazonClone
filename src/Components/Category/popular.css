@@ -2,7 +2,7 @@
 
 .popular {
   position: relative;
-  top: 80px;
+  margin-top: 100px;
   left: 34px;
   width: 96%;
 }
@@ -19,12 +19,13 @@
 .men,
 .women {
   cursor: pointer;
-  width: 50px;
+  width: 80px;
   background-color: white;
-  padding: 15px;
-  border-radius: 15px;
+  padding: 10px;
+  border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
+
 .jwellery,
 .men,
 .women {
@@ -51,13 +52,14 @@ img {
 
 @media (max-width: 530px) {
   .popular {
-    width: 87%;
+    width: 100%;
   }
+
   .electronics,
   .jwellery,
   .men,
   .women {
-    width: 38px;
+    width: 50px;
   }
 }
 
@@ -65,12 +67,14 @@ img {
   .popular {
     width: 84%;
   }
+
   .electronics,
   .jwellery,
   .men,
   .women {
-    width: 32px;
+    width: 50px;
   }
+
   .popular-items {
     display: grid;
     grid-template-columns: repeat(auto-fit, 70px);
@@ -78,12 +82,14 @@ img {
     justify-content: center;
     align-items: center;
   }
+
   .jwellery,
   .men,
   .women {
     margin: 0;
   }
-  .popular-head{
+
+  .popular-head {
     font-size: 20px;
   }
 }

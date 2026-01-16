@@ -96,7 +96,7 @@ function Orders() {
                             Number of items: <b>{item.quantity}</b>
                           </p>
                           {item.category === "men's clothing" ||
-                          item.category === "women's clothing" ? (
+                            item.category === "women's clothing" ? (
                             <p className="order-size">
                               Size: <b>{item.size}</b>
                             </p>
@@ -124,9 +124,6 @@ function Orders() {
               })}
           </div>
         </div>
-      </div>
-      <div className="lowerNav">
-        <LowerNav />
       </div>
       <Footer />
     </>

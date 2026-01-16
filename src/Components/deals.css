@@ -1,6 +1,6 @@
 .Deals {
   position: relative;
-  top: 160px;
+  margin-top: 60px;
   background-color: #f6f5f5;
 }
 
@@ -13,10 +13,11 @@
 
 .deal-items {
   display: grid;
-  padding-bottom: 120px;
-  padding-top: 15px;
-  grid-template-columns: repeat(auto-fit, 250px);
-  grid-gap: 10px;
+  padding-bottom: 50px;
+  padding-top: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: auto;
+  grid-gap: 20px;
   justify-content: center;
 }
 
@@ -24,20 +25,22 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-left: 24px;
+  align-items: center;
+  margin-left: 0;
   margin-top: 15px;
+  width: 100%;
 }
 
 .card-img {
   cursor: pointer;
-  width: 130px;
-  height: 150px;
+  width: 100%;
+  height: 300px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
-  padding: 50px;
+  padding: 0px !important;
   transition: all 0.5s;
   border-radius: 12px;
+  object-fit: contain;
   transition: all 0.5s;
 }
 
@@ -86,9 +89,10 @@
 
 .view {
   cursor: pointer;
-  position: relative;
-  bottom: 178px;
-  left: 62px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border: none;
   background-color: white;
   text-align: center;
@@ -103,7 +107,7 @@
 }
 
 .view:hover {
-  transform: scale(1.06);
+  transform: scale(1.06) translate(-50%, -50%);
 }
 
 .card-data {
@@ -121,20 +125,23 @@
 }
 
 .card-img-data {
-  height: 250px;
+  height: 380px;
+  position: relative;
 }
 
 .add-list {
   width: 24px;
-  position: relative;
-  bottom: 246px;
-  left: 92px;
+  position: absolute;
+  top: 10px;
+  right: 15px;
   transition: all 0.2s ease;
+  z-index: 10;
 }
 
 .add-list:hover {
   transform: scale(1.16);
 }
+
 .add-list:active {
   transform: scale(0.82);
 }
@@ -142,10 +149,12 @@
 .rating-img {
   width: 20px;
 }
+
 .rating {
   display: flex;
   align-items: center;
 }
+
 .rating-text {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -161,11 +170,34 @@
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 768px) {
+  .deal-items {
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+    grid-gap: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .card {
+    margin-left: 0;
+    width: 100%;
+    align-items: center;
+  }
+
+  .card-img {
+    padding: 10px;
+    width: 100%;
+    max-width: 140px;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+  }
+
   .deals-head {
     font-size: 20px;
   }
+
   .Deals {
-    top: 125px;
+    top: 50px;
   }
 }

@@ -6,7 +6,7 @@ import { app } from "../Firebase";
 import Default from "../imgs/default.png";
 import USER from "../imgs/user.png";
 import contact from "../imgs/contact.png";
-import LowerNav from "./LowerNav";
+
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -72,7 +72,7 @@ function Profile() {
                 onClick={() => {
                   signOut(auth);
                   setTimeout(() => {
-                    navigate("/signup"); 
+                    navigate("/signup");
                   }, 700);
                 }}
                 className="signout-btn"
@@ -101,16 +101,14 @@ function Profile() {
                     <p className="mail-data">Contact</p>
                     <img src={contact} className="mail-photo" />
                   </div>
-                  <p className="users-mail">{user ? `${user.email.slice(0,15) + "..."}` : ""}</p>
+                  <p className="users-mail">{user ? `${user.email.slice(0, 15) + "..."}` : ""}</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="lowerNav">
-        <LowerNav />
-      </div>
+
       <Footer />
     </>
   );

@@ -59,7 +59,7 @@ function Signin() {
 
   const LogInUser = async () => {
     signInWithEmailAndPassword(auth, email, password)
-      .then(() => {})
+      .then(() => { })
       .catch((error) => {
         swal({
           title: "Error!",
@@ -73,7 +73,7 @@ function Signin() {
   const GoogleAuth = async () => {
     signInWithPopup(auth, provider)
       .then(() => {
-        navigate("/home");
+        navigate("/");
       })
       .catch((error) => {
         swal({

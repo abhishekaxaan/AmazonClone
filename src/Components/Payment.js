@@ -13,7 +13,7 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { AddOrder } from "../action/Orders";
 import { useSelector, useDispatch } from "react-redux";
 import swal from "sweetalert";
-import LowerNav from "./LowerNav";
+
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -534,10 +534,10 @@ function Payment() {
                         cardType === "Visa"
                           ? visa
                           : cardType === "Mastercard"
-                          ? master
-                          : cardType === "American"
-                          ? american
-                          : ""
+                            ? master
+                            : cardType === "American"
+                              ? american
+                              : ""
                       }
                       className={
                         cardType !== ""
@@ -550,12 +550,12 @@ function Payment() {
                     <p className="account-number">
                       {cardNumber &&
                         cardNumber.slice(0, 4) +
-                          " " +
-                          cardNumber.slice(4, 8) +
-                          " " +
-                          cardNumber.slice(8, 12) +
-                          " " +
-                          cardNumber.slice(12, 16)}
+                        " " +
+                        cardNumber.slice(4, 8) +
+                        " " +
+                        cardNumber.slice(8, 12) +
+                        " " +
+                        cardNumber.slice(12, 16)}
                     </p>
                   </div>
                   <div className="last-layer">
@@ -705,9 +705,7 @@ function Payment() {
           </div>
         </div>
       </div>
-      <div className="lowerNav">
-        <LowerNav />
-      </div>
+
       <Footer />
     </>
   );
