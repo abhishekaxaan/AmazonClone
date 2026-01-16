@@ -18,6 +18,7 @@ import Error from "./Components/Error";
 const auth = getAuth(app);
 
 function App() {
+  console.log("App component rendering...");
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
