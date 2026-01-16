@@ -1,11 +1,8 @@
 import { React, useEffect, useState, useRef } from "react";
 import Logo from "../imgs/logo.png";
-import LogoSmall from "../imgs/A-logo.png";
 import search from "../imgs/search.png";
-import wishlist from "../imgs/wishlist.png";
 import cart from "../imgs/cart.png";
 import orders from "../imgs/orders.png";
-import Default from "../imgs/default.png";
 import { useSelector } from "react-redux";
 import { useNavigate, NavLink } from "react-router-dom";
 import "./navbar.css";

@@ -1,14 +1,14 @@
 import { React, useState, useEffect } from "react";
 import { AddToList, RemoveList } from "../action/List";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+
 import Added from "../imgs/red-heart.png";
 import Add from "../imgs/heart.png";
 import Footer from "./Footer";
 import rating from "../imgs/rating.png";
 import Navbar from "./Navbar";
 import empty from "../imgs/empty.png";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 
 import "./lists.css";
 
