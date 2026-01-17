@@ -1,3 +1,4 @@
+import { React, useEffect, useState, useRef } from "react";
 import Logo from "../imgs/ecom-logo.png";
 import search from "../imgs/search.png";
 import cart from "../imgs/cart.png";
