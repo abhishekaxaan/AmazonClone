@@ -1,5 +1,5 @@
 import { React, useEffect, useState, useRef } from "react";
-import Logo from "../imgs/ecom-logo.png";
+import Logo from "../imgs/Shopverse Logo.png";
 import search from "../imgs/search.png";
 import cart from "../imgs/cart.png";
 import orders from "../imgs/orders.png";
@@ -81,7 +81,7 @@ function Navbar() {
       {/* DESKTOP NAVBAR */}
       <div className="navbar desktop-only">
         <NavLink to="/">
-          <img src={Logo} className="nav-logo" alt="ECom Store Logo" />
+          <img src={Logo} className="nav-logo" alt="ShopVerse Logo" />
         </NavLink>
 
         <div className="nav-fill">
@@ -89,7 +89,7 @@ function Navbar() {
             {/* SEARCH */}
             <input
               type="text"
-              placeholder="Search ECom Demo Store"
+              placeholder="Search ShopVerse"
               name="search"
               autoComplete="off"
               onChange={(event) => {
@@ -156,7 +156,7 @@ function Navbar() {
             <span className="hamburger-icon-mobile"></span>
           </div>
           <NavLink to="/">
-            <img src={Logo} className="nav-logo-mobile" alt="ECom Store Logo" />
+            <img src={Logo} className="nav-logo-mobile" alt="ShopVerse Logo" />
           </NavLink>
         </div>
 
@@ -177,7 +177,7 @@ function Navbar() {
         <div className="search-bar">
           <input
             type="text"
-            placeholder="Search ECom Demo Store"
+            placeholder="Search ShopVerse"
             name="search"
             autoComplete="off"
             onChange={(event) => {

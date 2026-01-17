@@ -7,7 +7,7 @@ import Navbar from './Navbar'
 function Home() {
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  document.title = "ECom Demo Store"
+  document.title = "ShopVerse"
 
   const handleScroll = () => {
     window.scrollTo({

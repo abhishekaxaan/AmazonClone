@@ -17,7 +17,7 @@ function Profile() {
   const [image, setImage] = useState("");
   const navigate = useNavigate();
 
-  document.title = "Profile section"
+  document.title = "ShopVerse Profile"
 
   const checkDP = () => {
     if (user && user.photoURL && user.photoURL.includes("https")) {

@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import "./signin.css";
-import Logo from "../imgs/ecom-logo.png";
+import Logo from "../imgs/Shopverse Logo.png";
 import BG1 from "../imgs/login-BG.png";
 import BG2 from "../imgs/login-BG2.png";
 import google from "../imgs/google.png";
@@ -25,7 +25,7 @@ function Signin() {
   const [bgLoaded, setBgLoaded] = useState(false);
   const navigate = useNavigate();
 
-  document.title = "ECom Demo Store"
+  document.title = "ShopVerse"
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);

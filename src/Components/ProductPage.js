@@ -26,7 +26,7 @@ function ProductPage() {
 
   const tiltRef = useRef(null);
 
-  document.title = `${product ? product.title : "ECom Demo Store"}`
+  document.title = `${product ? product.title : "ShopVerse"}`
 
   const CartItems = useSelector((state) => state.CartItemsAdded.CartItems);
   const ListItems = useSelector((state) => state.ItemsAdded.ListItems);
