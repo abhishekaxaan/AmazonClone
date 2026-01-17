@@ -1,6 +1,6 @@
 import React from "react";
 import "./footer.css";
-import Logo from "../imgs/logo2.png";
+import Logo from "../imgs/ecom-logo.png";
 
 function Footer() {
   return (
@@ -8,8 +8,8 @@ function Footer() {
       <div className="footer">
         <div className="disclaimer-area">
           <p className="disclaimer-desc">
-            <b>Disclaimer:</b> This Amazon clone project is a mere simulation
-            and is not affiliated with Amazon in any way.
+            <b>Disclaimer:</b> This ECom Demo Store project is a mere simulation
+            and is not affiliated with any real e-commerce store in any way.
           </p>
         </div>
       </div>
@@ -18,23 +18,23 @@ function Footer() {
           <div className="first-row">
             <p className="bold">Get to Know Us</p>
             <p>Make Money with Us</p>
-            <p>Amazon Payment</p>
+            <p>Payment Options</p>
             <p>Let Us Help You</p>
           </div>
           <div className="second-row">
-            <p className="bold">About Amazon</p>
-            <p>Sell products on Amazon</p>
-            <p>Amazon Business Card</p>
-            <p>Amazon and COVID-19</p>
+            <p className="bold">About ECom Demo Store</p>
+            <p>Sell products on ECom Store</p>
+            <p>Business Card</p>
+            <p>ECom Store and COVID-19</p>
           </div>
           <div className="third-row">
             <p className="bold">Connect with Us</p>
-            <p>Sell apps on Amazon</p>
+            <p>Sell apps on ECom Store</p>
             <p>Shop with Points</p>
             <p>Shipping Rates & Policies</p>
           </div>
           <div className="fourth-row">
-            <p className="bold">Amazon Cares</p>
+            <p className="bold">ECom Demo Store Cares</p>
             <p>Become an Affiliate</p>
             <p>Reload Your Balance</p>
             <p>Returns & Replacements</p>
@@ -45,25 +45,25 @@ function Footer() {
             <div className="first-row">
               <p className="bold">Get to Know Us</p>
               <p>Make Money with Us</p>
-              <p>Amazon Payment</p>
+              <p>Payment Options</p>
               <p>Let Us Help You</p>
             </div>
             <div className="second-row">
-              <p className="bold">About Amazon</p>
-              <p>Sell products on Amazon</p>
-              <p>Amazon Business Card</p>
-              <p>Amazon and COVID-19</p>
+              <p className="bold">About ECom Demo Store</p>
+              <p>Sell products on ECom Store</p>
+              <p>Business Card</p>
+              <p>ECom Store and COVID-19</p>
             </div>
           </div>
           <div className="second-one">
             <div className="third-row">
               <p className="bold">Connect with Us</p>
-              <p>Sell apps on Amazon</p>
+              <p>Sell apps on ECom Store</p>
               <p>Shop with Points</p>
               <p>Shipping Rates & Policies</p>
             </div>
             <div className="fourth-row">
-              <p className="bold">Amazon Cares</p>
+              <p className="bold">ECom Demo Store Cares</p>
               <p>Become an Affiliate</p>
               <p>Reload Your Balance</p>
               <p>Returns & Replacements</p>
@@ -71,9 +71,9 @@ function Footer() {
           </div>
         </div>
         <div className="developer">
-          <img src={Logo} className="amazon-img" />
+          <img src={Logo} className="amazon-img" alt="ECom Store Logo" />
           <div className="dev-data">
-            <p>&copy; 2023 | Developed by </p>
+            <p>&copy; 2025 | Developed by </p>
             <div className="dev-link">
               Abhishek Kumar Singh
             </div>

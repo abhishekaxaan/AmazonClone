@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import "./signin.css";
-import Logo from "../imgs/logo2.png";
+import Logo from "../imgs/ecom-logo.png";
 import BG1 from "../imgs/login-BG.png";
 import BG2 from "../imgs/login-BG2.png";
 import google from "../imgs/google.png";
@@ -29,7 +29,7 @@ function Signup() {
   const [PasswordError, setPasswordError] = useState("");
   const [NameError, setNameError] = useState("");
 
-  document.title = "Amazon"
+  document.title = "ECom Demo Store"
 
   const notify1 = () =>
     toast.error("Please fill-up all the credentials properly!", {
